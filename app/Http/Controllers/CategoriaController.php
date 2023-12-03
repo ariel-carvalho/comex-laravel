@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Http\Requests\Categoria\StoreRequest;
 
 class CategoriaController extends Controller
 {
@@ -40,7 +41,7 @@ class CategoriaController extends Controller
             ]
         ];*/
         
-        $categorias = Categoria::all();
+        $categorias = Categoria::orderBy("nome", "ASC")->get();
         return view("categorias.index", ["categorias" => $categorias]);
     }
 
@@ -55,10 +56,10 @@ class CategoriaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(StoreRequest $request)
+    {   
         Categoria::create(["nome" => $request->nome]);
-        return to_route("categorias.index");
+        return to_route("categorias.index")->with("mensagem", "Categoria Adicionada Com Sucesso!");
     }
 
     /**
