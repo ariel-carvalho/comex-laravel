@@ -23,5 +23,6 @@ Route::get('/', function () {
 });
 
 Route::get("/categorias", [CategoriaController::class, "index"])->name("categorias.index");
-
+Route::get("/categorias/criar", [CategoriaController::class, "create"])->name("categorias.create");
+Route::post("/categorias/salvar", [CategoriaController::class, "store"])->name("categorias.store");
 //Route::resource("categorias", CategoriaController::class);
