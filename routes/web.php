@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,9 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', function () {
-    return "Vai Corinthians!!!";
+    return view ("welcome");
 });
+
+Route::get("/categorias", [CategoriaController::class, "index"])->name("categorias.index");
+
+//Route::resource("categorias", CategoriaController::class);
