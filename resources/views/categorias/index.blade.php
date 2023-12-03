@@ -4,7 +4,12 @@
     <ul>
         @foreach ($categorias as $categoria)
         <li>
-            {{ $categoria["nome"] }}
+            {{ $categoria->nome}}
+            <form
+                action="{{ route('categorias.destroy', $categoria->id) }}" method="post">
+                @csrf @method("DELETE")
+                <button type="submit">Deletar</button>
+            </form>
         </li>
         @endforeach
     </ul>

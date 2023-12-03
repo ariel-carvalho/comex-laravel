@@ -89,8 +89,10 @@ class CategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) 
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->delete();
+        return to_route("categorias.index")->with("mensagem", "Categoria Excluída");
     }
 }

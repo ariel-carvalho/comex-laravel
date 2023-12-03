@@ -25,4 +25,8 @@ Route::get('/', function () {
 Route::get("/categorias", [CategoriaController::class, "index"])->name("categorias.index");
 Route::get("/categorias/criar", [CategoriaController::class, "create"])->name("categorias.create");
 Route::post("/categorias/salvar", [CategoriaController::class, "store"])->name("categorias.store");
+Route::delete("categorias/{id}", [CategoriaController::class, "destroy"])->name("categorias.destroy");
+
+
+
 //Route::resource("categorias", CategoriaController::class);
