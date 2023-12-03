@@ -10,6 +10,7 @@
                 @csrf @method("DELETE")
                 <button type="submit">Deletar</button>
             </form>
+            <a href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
         </li>
         @endforeach
     </ul>

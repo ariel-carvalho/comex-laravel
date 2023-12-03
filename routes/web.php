@@ -23,9 +23,13 @@ Route::get('/', function () {
 });
 
 Route::get("/categorias", [CategoriaController::class, "index"])->name("categorias.index");
-Route::get("/categorias/criar", [CategoriaController::class, "create"])->name("categorias.create");
+
 Route::post("/categorias/salvar", [CategoriaController::class, "store"])->name("categorias.store");
+Route::get("/categorias/criar", [CategoriaController::class, "create"])->name("categorias.create");
+
+Route::get("/categorias/{id}/editar", [CategoriaController::class, "edit"])->name("categorias.edit");
 Route::delete("categorias/{id}", [CategoriaController::class, "destroy"])->name("categorias.destroy");
+Route::put("categorias/{id}", [CategoriaController::class, "update"])->name("categorias.update");
 
 
 

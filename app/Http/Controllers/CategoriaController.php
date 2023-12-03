@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Categoria;
-use App\Http\Requests\Categoria\StoreRequest;
+use App\Http\Requests\CategoriaFormRequest;
 
 class CategoriaController extends Controller
 {
@@ -56,7 +55,7 @@ class CategoriaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequest $request)
+    public function store(CategoriaFormRequest $request)
     {   
         Categoria::create(["nome" => $request->nome]);
         return to_route("categorias.index")->with("mensagem", "Categoria Adicionada Com Sucesso!");
@@ -75,15 +74,20 @@ class CategoriaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view("categorias.edit", ["categoria" => Categoria::findOrFail($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoriaFormRequest $request, string $id)
     {
-        //
+        /**
+        * @var Categoria $categoria
+        */
+        $categoria = Categoria::findOrFail($id);
+        $categoria->update($request->all());
+        return to_route("categorias.index")->with("mensagem", "Categoria Atualizada");
     }
 
     /**

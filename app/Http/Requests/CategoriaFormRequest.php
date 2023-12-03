@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Categoria;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class CategoriaFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +28,9 @@ class StoreRequest extends FormRequest
     {
         return
         [
-            "required" => "O campo :atribute é obrigatório",
-            "min" => "O campo :atribute deve ter no mínimo :min caracteres",
-            "max"=> "O campo :atribute deve ter no mínimo :max caracteres"
+            "required" => "O campo :attribute é obrigatório",
+            "min" => "O campo :attribute deve ter no mínimo :min caracteres",
+            "max"=> "O campo :attribute deve ter no mínimo :max caracteres"
         ];
     }
 }
