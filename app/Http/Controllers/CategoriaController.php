@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
@@ -11,7 +12,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = 
+        /*$categorias = 
         [
             [
                 "nome" => "CELULARES"
@@ -37,8 +38,9 @@ class CategoriaController extends Controller
             [
                 "nome" => "LUXO"
             ]
-        ];
+        ];*/
         
+        $categorias = Categoria::all();
         return view("categorias.index", ["categorias" => $categorias]);
     }
 
